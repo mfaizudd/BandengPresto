@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical")*10;
 
         rb.velocity = new Vector2(moveHorizontal, transform.position.y) * speed;
     }
