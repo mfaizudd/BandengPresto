@@ -26,7 +26,7 @@ public class obstaclemanager : MonoBehaviour {
 	void Update () {
         if(play)
         {
-            if (r.gameOver)
+            if (player.lives<=0)
             {
                 b.gameObject.SetActive(true);
                 img.gameObject.SetActive(true);
@@ -58,10 +58,9 @@ public class obstaclemanager : MonoBehaviour {
     {
         b.gameObject.SetActive(false);
         img.gameObject.SetActive(false);
-        r.gameOver = false;
-        r.lives = 3;
+        player.lives = 3;
         play = true;
-        r.liveText.text = "Lives : " + r.lives;
+        player.liveText.text = "Lives : " + player.lives;
         player.score = 0;
         player.scoreText.text = "Score : " + player.score;
         timestamp = Time.time + timeDelay;

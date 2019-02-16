@@ -5,11 +5,6 @@ using UnityEngine.UI;
 
 public class remover : MonoBehaviour {
 
-
-    public int lives = 3;
-    public Text liveText;
-    public bool gameOver = false;
-
 	// Use this for initialization
 	void Start () {
 		
@@ -25,14 +20,10 @@ public class remover : MonoBehaviour {
         if (other.CompareTag("Obstacle"))
         {
             Destroy(other.gameObject);
-            lives--;
-            liveText.text = "Lives : " + lives;
-            if(lives<=0)
-            {
-                gameOver = true;
-
-                liveText.text = "Game Over";
-            }
+        }
+        else if (other.CompareTag("Enemy"))
+        {
+            Destroy(other.gameObject);
         }
     }
 }

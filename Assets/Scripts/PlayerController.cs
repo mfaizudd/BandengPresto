@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour {
     Rigidbody2D rb;
     public int speed;
     public int score = 0;
+    public int lives = 3;
     public Text scoreText;
+    public bool moved = false;
+    public Text liveText;
 
     //Awake 
     // Use this for initialization
@@ -22,7 +25,10 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
         float moveHorizontal = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector2(moveHorizontal, transform.position.y) * speed;
+        if(!moved)
+        {
+            rb.velocity = new Vector2(moveHorizontal, transform.position.y) * speed;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -32,6 +38,16 @@ public class PlayerController : MonoBehaviour {
             Destroy(other.gameObject);
             score++;
             scoreText.text = "Score : "+score;
+        }
+        else if (other.CompareTag("Enemy"))
+        {
+            Destroy(other.gameObject);
+            lives--;
+            liveText.text = "Lives : " + lives;
+            if (lives <= 0)
+            {
+                liveText.text = "Game Over";
+            }
         }
     }
 
