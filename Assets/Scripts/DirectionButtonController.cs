@@ -35,10 +35,7 @@ public class DirectionButtonController : MonoBehaviour, IPointerDownHandler, IPo
     void Update () {
 		if(move)
         {
-            inputValue += Time.deltaTime * direction;
-            inputValue = Mathf.Clamp(inputValue, -1, 1);
-            Debug.Log(rb.velocity);
-            rb.velocity = new Vector2(inputValue, player.transform.position.y) * playerController.speed;
+            rb.velocity = new Vector2(direction, player.transform.position.y) * playerController.speed;
         }
         else
         {

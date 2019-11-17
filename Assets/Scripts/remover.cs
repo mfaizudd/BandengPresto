@@ -3,17 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class remover : MonoBehaviour {
+public class Remover : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public GameObject explosion;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -23,6 +15,7 @@ public class remover : MonoBehaviour {
         }
         else if (other.CompareTag("Enemy"))
         {
+            Instantiate(explosion, other.transform.position, other.transform.rotation);
             Destroy(other.gameObject);
         }
     }
